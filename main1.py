@@ -11,7 +11,7 @@ ratings['movieId'] = ratings['movieId'].map(movie_titles.set_index('movieId')['t
 user_item_matrix = ratings.pivot_table(index='userId', columns='movieId', values='rating').fillna(0)
 
 def get_recommendations(user_id, n_recommendations):
-    # Calculate the similarity between users
+
     user_similarity = 1 - pairwise_distances(user_item_matrix.T, metric='cosine')
 
 
