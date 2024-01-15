@@ -5,8 +5,8 @@ from sklearn.metrics.pairwise import pairwise_distances
 from sklearn.neighbors import NearestNeighbors
 
 
-ratings = pd.read_csv('ratings.csv')
-movie_titles = pd.read_csv('Movie_Id_Titles.csv')
+ratings = pd.read_csv('https://www.kaggle.com/datasets/rounakbanik/the-movies-dataset?select=ratings.csv')
+movie_titles = pd.read_csv('https://www.kaggle.com/datasets/rounakbanik/the-movies-dataset?select=movies_metadata.csv')
 ratings['movieId'] = ratings['movieId'].map(movie_titles.set_index('movieId')['title'])
 user_item_matrix = ratings.pivot_table(index='userId', columns='movieId', values='rating').fillna(0)
 
